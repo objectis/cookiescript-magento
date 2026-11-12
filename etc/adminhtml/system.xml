@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!--
+    Stores > Configuration > CookieScript > Cookie Banner
+
+    Every field can be set per website / store view, so each store can have its own banner.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="cookiescript" translate="label" sortOrder="400">
+            <label>CookieScript</label>
+        </tab>
+        <section id="cookiescript" translate="label" type="text" sortOrder="10"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Cookie Banner</label>
+            <tab>cookiescript</tab>
+            <resource>CookieScript_Banner::config</resource>
+
+            <!-- ============================ Banner ============================ -->
+            <group id="banner" translate="label" type="text" sortOrder="10"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Banner</label>
+
+                <field id="enabled" translate="label comment" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable CookieScript banner</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Adds the cookie banner to the storefront.</comment>
+                </field>
+
+                <!-- Banner link from your CookieScript account -->
+                <field id="source_url" translate="label comment" type="text" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>CookieScript source link</label>
+                    <backend_model>CookieScript\Banner\Model\Config\Backend\SourceUrl</backend_model>
+                    <comment>Example: https://cdn.cookie-script.com/s/0123456789abcdef0123456789abcdef.js. You can find it in your account at Cookie-Script.com, under the "Installation" tab.</comment>
+                </field>
+                <field id="location" translate="label comment" type="select" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Script location in the page</label>
+                    <source_model>CookieScript\Banner\Model\Config\Source\Location</source_model>
+                </field>
+                <field id="position" translate="label comment" type="select" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Script position</label>
+                    <source_model>CookieScript\Banner\Model\Config\Source\Position</source_model>
+                    <comment>"First" puts the script at the start of the chosen location, "Last" at the end. To block third-party cookies until a visitor agrees, keep the script as high in the page as possible.</comment>
+                </field>
+            </group>
+
+            <!-- ======================= Google Consent Mode ======================= -->
+            <group id="google_consent_mode" translate="label comment" type="text" sortOrder="20"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Google Consent Mode v2</label>
+                <comment>Sets the default consent state Google tags start with, until the visitor makes a choice in the banner.</comment>
+
+                <field id="enabled" translate="label" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Google Consent Mode</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="ad_storage" translate="label" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Advertisement Cookies (ad_storage)</label>
+                    <source_model>CookieScript\Banner\Model\Config\Source\ConsentValue</source_model>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="analytics_storage" translate="label" type="select" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Analytics Cookies (analytics_storage)</label>
+                    <source_model>CookieScript\Banner\Model\Config\Source\ConsentValue</source_model>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="ad_user_data" translate="label" type="select" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Advertisement User Data (ad_user_data)</label>
+                    <source_model>CookieScript\Banner\Model\Config\Source\ConsentValue</source_model>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="ad_personalization" translate="label" type="select" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Advertisement Personalization (ad_personalization)</label>
+                    <source_model>CookieScript\Banner\Model\Config\Source\ConsentValue</source_model>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="functionality_storage" translate="label" type="select" sortOrder="60"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Functional Cookies (functionality_storage)</label>
+                    <source_model>CookieScript\Banner\Model\Config\Source\ConsentValue</source_model>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="personalization_storage" translate="label" type="select" sortOrder="70"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Personalization Cookies (personalization_storage)</label>
+                    <source_model>CookieScript\Banner\Model\Config\Source\ConsentValue</source_model>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="security_storage" translate="label" type="select" sortOrder="80"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Security Cookies (security_storage)</label>
+                    <source_model>CookieScript\Banner\Model\Config\Source\ConsentValue</source_model>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="wait_for_update" translate="label comment" type="text" sortOrder="90"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Wait for update (ms)</label>
+                    <validate>required-entry validate-digits validate-greater-than-zero</validate>
+                    <backend_model>CookieScript\Banner\Model\Config\Backend\WaitForUpdate</backend_model>
+                    <comment>How long Google tags wait for the visitor's choice, in milliseconds.</comment>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+
+                <field id="regional" translate="label comment" type="text" sortOrder="100"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Regional settings</label>
+                    <frontend_model>CookieScript\Banner\Block\Adminhtml\Form\Field\RegionalSettings</frontend_model>
+                    <backend_model>CookieScript\Banner\Model\Config\Backend\RegionalSettings</backend_model>
+                    <comment>Different defaults for specific regions. Region code is an ISO 3166-2 code such as "US-CA", or several codes separated by commas ("DE, FR"). An empty "Wait for update" uses 500 ms.</comment>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

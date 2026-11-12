@@ -1,0 +1,30 @@
+<?php
+/**
+ * Prints the CookieScript banner (and, when enabled, the Google Consent Mode defaults before it).
+ *
+ * This template is placed four times by layout/default.xml (head/body x first/last);
+ * only the placement chosen in the admin actually prints.
+ */
+declare(strict_types=1);
+
+use CookieScript\Banner\ViewModel\Banner;
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+
+/** @var Template $block */
+/** @var Escaper $escaper */
+/** @var Banner $viewModel */
+
+$viewModel = $block->getData('view_model');
+
+if (!$viewModel->shouldRender((string) $block->getData('location'), (string) $block->getData('position'))) {
+    return;
+}
+
+$consentModeScript = $viewModel->getConsentModeScript();
+?>
+<?php if ($consentModeScript !== ''): ?>
+    <?= /* @noEscape */ $viewModel->renderInlineScript($consentModeScript) ?>
+<?php endif; ?>
+<script type="text/javascript" charset="UTF-8" data-cs-platform="magento" id="cookie_script-js-with"
+        src="<?= $escaper->escapeUrl($viewModel->getSourceUrl()) ?>"></script>

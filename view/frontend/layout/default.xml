@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+    Places the cookie banner on every storefront page.
+
+    The same template is added four times: first / last inside the <head>, and first / last
+    in the <body>. The admin setting decides which one prints (see ViewModel\Banner::shouldRender()),
+    so the page stays fully cacheable by the Full Page Cache.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Magento\Framework\View\Element\Template" name="cookiescript.banner.head.first"
+                   template="CookieScript_Banner::banner.phtml" before="-">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">CookieScript\Banner\ViewModel\Banner</argument>
+                    <argument name="location" xsi:type="string">head</argument>
+                    <argument name="position" xsi:type="string">first</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Template" name="cookiescript.banner.head.last"
+                   template="CookieScript_Banner::banner.phtml" after="-">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">CookieScript\Banner\ViewModel\Banner</argument>
+                    <argument name="location" xsi:type="string">head</argument>
+                    <argument name="position" xsi:type="string">last</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Framework\View\Element\Template" name="cookiescript.banner.body.first"
+                   template="CookieScript_Banner::banner.phtml" before="-">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">CookieScript\Banner\ViewModel\Banner</argument>
+                    <argument name="location" xsi:type="string">body</argument>
+                    <argument name="position" xsi:type="string">first</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="cookiescript.banner.body.last"
+                   template="CookieScript_Banner::banner.phtml" after="-">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">CookieScript\Banner\ViewModel\Banner</argument>
+                    <argument name="location" xsi:type="string">body</argument>
+                    <argument name="position" xsi:type="string">last</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,31 @@
+{
+    "name": "cookiescript/module-banner",
+    "description": "Cookie-Script.com cookie consent banner for Magento 2 / Adobe Commerce, with Google Consent Mode v2.",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://cookie-script.com/",
+    "keywords": ["magento2", "cookie", "consent", "gdpr", "cookiescript", "google consent mode"],
+    "authors": [
+        {
+            "name": "Cookie-Script.com",
+            "homepage": "https://cookie-script.com/"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "magento/framework": ">=103.0.4",
+        "magento/module-config": "*",
+        "magento/module-csp": "*",
+        "magento/module-store": "*",
+        "magento/module-theme": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "CookieScript\\Banner\\": ""
+        }
+    }
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+    Scan results of the "I don't have a CookieScript account" mode.
+
+    One row per configuration scope (default / website / store view). The banner script and the
+    cookie report can be bigger than the 64 KB a core_config_data value allows, so they live here.
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="cookiescript_scan_data" resource="default" engine="innodb"
+           comment="CookieScript website scan data per configuration scope">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="varchar" name="scope" nullable="false" length="8" default="default"
+                comment="Configuration scope: default, websites or stores"/>
+        <column xsi:type="int" name="scope_id" unsigned="true" nullable="false" default="0"
+                comment="Configuration scope ID"/>
+        <column xsi:type="varchar" name="secret" nullable="false" length="32" default=""
+                comment="Random site identifier sent to the CookieScript scan API"/>
+        <column xsi:type="varchar" name="policy_url" nullable="false" length="255" default=""
+                comment="Cookie policy page URL given when scanning"/>
+        <column xsi:type="varchar" name="language" nullable="false" length="8" default=""
+                comment="Banner language given when scanning"/>
+        <column xsi:type="varchar" name="scan_status" nullable="false" length="16" default="idle"
+                comment="idle or scanning"/>
+        <column xsi:type="mediumtext" name="script_content" nullable="true" comment="Banner JavaScript"/>
+        <column xsi:type="mediumtext" name="cookies_json" nullable="true" comment="Scanned cookies, grouped by category (JSON)"/>
+        <column xsi:type="int" name="scanned_at" unsigned="true" nullable="false" default="0"
+                comment="Unix time of the last finished scan"/>
+        <column xsi:type="int" name="script_updated_at" unsigned="true" nullable="false" default="0"
+                comment="Unix time of the last manual banner script update"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="COOKIESCRIPT_SCAN_DATA_SCOPE_SCOPE_ID">
+            <column name="scope"/>
+            <column name="scope_id"/>
+        </constraint>
+    </table>
+</schema>

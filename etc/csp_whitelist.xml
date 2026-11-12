@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+    Content Security Policy: allow the storefront to load the CookieScript banner script
+    (cdn / eu / ca / ca-eu / geo .cookie-script.com) and let it talk to its own servers.
+-->
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="cookiescript" type="host">*.cookie-script.com</value>
+                <value id="cookiescript_root" type="host">cookie-script.com</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="cookiescript" type="host">*.cookie-script.com</value>
+                <value id="cookiescript_root" type="host">cookie-script.com</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="cookiescript" type="host">*.cookie-script.com</value>
+                <value id="cookiescript_root" type="host">cookie-script.com</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>

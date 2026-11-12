@@ -1,0 +1,21 @@
+{
+    "cookiescript_scan_data": {
+        "column": {
+            "entity_id": true,
+            "scope": true,
+            "scope_id": true,
+            "secret": true,
+            "policy_url": true,
+            "language": true,
+            "scan_status": true,
+            "script_content": true,
+            "cookies_json": true,
+            "scanned_at": true,
+            "script_updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "COOKIESCRIPT_SCAN_DATA_SCOPE_SCOPE_ID": true
+        }
+    }
+}

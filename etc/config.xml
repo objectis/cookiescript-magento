@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!-- Default values. Everything below can be overridden per website / store view in the admin. -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <cookiescript>
+            <banner>
+                <enabled>0</enabled>
+                <source_url/>
+                <location>head</location>
+                <position>first</position>
+            </banner>
+            <google_consent_mode>
+                <enabled>0</enabled>
+                <ad_storage>denied</ad_storage>
+                <analytics_storage>denied</analytics_storage>
+                <ad_user_data>denied</ad_user_data>
+                <ad_personalization>denied</ad_personalization>
+                <functionality_storage>denied</functionality_storage>
+                <personalization_storage>denied</personalization_storage>
+                <security_storage>denied</security_storage>
+                <wait_for_update>500</wait_for_update>
+            </google_consent_mode>
+        </cookiescript>
+    </default>
+</config>
