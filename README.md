@@ -1,7 +1,7 @@
 # CookieScript Cookie Banner for Magento 2
 
 Adds a [Cookie-Script.com](https://cookie-script.com/) cookie consent banner to a Magento 2 / Adobe Commerce
-storefront, with Google Consent Mode v2. It is the Magento version of the CookieScript WordPress plugin.
+storefront, with Google Consent Mode v2.
 
 - **Module name:** `CookieScript_Banner`
 - **Composer package:** `cookiescript/module-banner`
@@ -14,8 +14,6 @@ storefront, with Google Consent Mode v2. It is the Magento version of the Cookie
 | **Source link:** paste the banner link from your CookieScript account; choose where in the page the script goes (header or body, first or last) | *Banner* section |
 | **Google Consent Mode v2:** default consent state for the 7 consent types plus "wait for update", globally and per region | *Google Consent Mode v2* section |
 | **Per website / store view** settings, so every store can have its own banner | Scope switcher at the top of the configuration page |
-
-A website cookie scanner (the WordPress plugin's "I don't have an account" mode) is **not** included yet.
 
 ## Install
 
@@ -70,22 +68,14 @@ Every setting can be changed per website or store view with the scope switcher.
 - **Full Page Cache:** the banner is part of the cached page, so saving the settings empties the *Full Page Cache*
   automatically and the change shows on the next visit.
 - **Content Security Policy:** the module whitelists `cookie-script.com` and `*.cookie-script.com` (scripts, connections,
-  images) and prints inline scripts through Magento's secure renderer, so it works with CSP in report-only and enforced mode.
+  images) and prints inline scripts through Magento's secure renderer, so the banner is allowed by Magento's Content Security Policy.
 - **Themes:** the banner is added to the standard `head.additional`, `after.body.start` and `before.body.end` layout
-  elements, which Luma, Blank and Hyvä all provide.
+  elements, which the standard Magento themes provide.
 - **Uninstall:** `bin/magento module:uninstall --remove-data CookieScript_Banner` deletes the saved settings.
-
-## Differences from the WordPress plugin
-
-| WordPress plugin | Magento module |
-|---|---|
-| "I don't have a CookieScript account" mode: website scan, cookie report, generated banner | Not included yet. |
-| WP Consent API integration | Not included. It is a WordPress-only standard. |
-| `data-cs-platform="wordpress"` | `data-cs-platform="magento"` |
 
 ## License
 
-GPL-2.0-or-later, the same as the CookieScript WordPress plugin. See `LICENSE`.
+GPL-2.0-or-later. See `LICENSE`.
 
 ## Code map
 

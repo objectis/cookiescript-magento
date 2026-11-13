@@ -9,7 +9,7 @@ namespace CookieScript\Banner\Model\ConsentMode;
  * Used twice: when the admin saves the settings (reject bad input) and again when the
  * script is printed on the storefront (never trust what is stored).
  */
-final class Sanitizer
+class Sanitizer
 {
     /**
      * The seven consent types Google Consent Mode v2 knows. Each one is "granted" or "denied".
