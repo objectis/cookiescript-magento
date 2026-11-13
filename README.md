@@ -19,16 +19,17 @@ A website cookie scanner (the WordPress plugin's "I don't have an account" mode)
 
 ## Install
 
-### With Composer
+### With Composer (recommended)
 
 ```bash
-composer config repositories.cookiescript path /path/to/cookiescript-magento   # or add your own repository
-composer require cookiescript/module-banner:@dev
+composer require cookiescript/module-banner
 ```
 
-### By copying the files
+### By downloading the zip
 
-Copy the contents of this folder into `app/code/CookieScript/Banner/` of your Magento installation.
+1. Download the module zip from Cookie-Script.com.
+2. Create the folder `app/code/CookieScript/Banner/` in your Magento installation.
+3. Unzip the files into that folder, so that `registration.php` ends up at `app/code/CookieScript/Banner/registration.php`.
 
 ### Then, in both cases
 
@@ -82,10 +83,9 @@ Every setting can be changed per website or store view with the scope switcher.
 | WP Consent API integration | Not included. It is a WordPress-only standard. |
 | `data-cs-platform="wordpress"` | `data-cs-platform="magento"` |
 
-## Please confirm with the CookieScript team
+## License
 
-1. **Platform name.** The banner script tag carries `data-cs-platform="magento"` (in `view/frontend/templates/banner.phtml`).
-2. **License.** `composer.json` says `GPL-2.0-or-later`, the same as the WordPress plugin. Change it if Magento should differ.
+GPL-2.0-or-later, the same as the CookieScript WordPress plugin. See `LICENSE`.
 
 ## Code map
 

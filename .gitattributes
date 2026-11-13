@@ -1,0 +1,3 @@
+# Keep repository-only files out of the archives that GitHub and Composer build for each release.
+/.gitignore export-ignore
+/.gitattributes export-ignore

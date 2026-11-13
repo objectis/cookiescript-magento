@@ -2,7 +2,6 @@
     "name": "cookiescript/module-banner",
     "description": "Cookie-Script.com cookie consent banner for Magento 2 / Adobe Commerce, with Google Consent Mode v2.",
     "type": "magento2-module",
-    "version": "1.0.0",
     "license": "GPL-2.0-or-later",
     "homepage": "https://cookie-script.com/",
     "keywords": ["magento2", "cookie", "consent", "gdpr", "cookiescript", "google consent mode"],
