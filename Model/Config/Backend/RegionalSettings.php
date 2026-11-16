@@ -41,9 +41,9 @@ class RegionalSettings extends ArraySerialized
 
             // Left empty means "use the default" (500 ms); anything else must be a valid number.
             $waitForUpdate = trim((string) ($row['wait_for_update'] ?? ''));
-            if ($waitForUpdate !== '' && !Sanitizer::isPositiveInteger($waitForUpdate)) {
+            if ($waitForUpdate !== '' && !Sanitizer::isValidWaitForUpdate($waitForUpdate)) {
                 throw new LocalizedException(__(
-                    'Regional "Wait for update" must be a whole number greater than zero. No changes were saved.'
+                    'Regional "Wait for update" must be a whole number from 1 to 60000. No changes were saved.'
                 ));
             }
 

@@ -8,7 +8,7 @@ use Magento\Framework\App\Config\Value;
 use Magento\Framework\Exception\LocalizedException;
 
 /**
- * "Wait for update" must be a whole number of milliseconds greater than zero.
+ * "Wait for update" must be a whole number of milliseconds, from 1 to 60000.
  */
 class WaitForUpdate extends Value
 {
@@ -20,9 +20,9 @@ class WaitForUpdate extends Value
     {
         $value = trim((string) $this->getValue());
 
-        if (!Sanitizer::isPositiveInteger($value)) {
+        if (!Sanitizer::isValidWaitForUpdate($value)) {
             throw new LocalizedException(__(
-                'Google Consent Mode "Wait for update" must be a whole number greater than zero. No changes were saved.'
+                'Google Consent Mode "Wait for update" must be a whole number from 1 to 60000. No changes were saved.'
             ));
         }
 

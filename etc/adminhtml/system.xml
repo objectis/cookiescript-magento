@@ -108,7 +108,7 @@
                     <label>Wait for update (ms)</label>
                     <validate>required-entry validate-digits validate-greater-than-zero</validate>
                     <backend_model>CookieScript\Banner\Model\Config\Backend\WaitForUpdate</backend_model>
-                    <comment>How long Google tags wait for the visitor's choice, in milliseconds.</comment>
+                    <comment>How long Google tags wait for the visitor's choice, in milliseconds (1 to 60000).</comment>
                     <depends><field id="enabled">1</field></depends>
                 </field>
 

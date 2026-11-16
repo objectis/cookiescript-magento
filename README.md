@@ -48,14 +48,16 @@ Open **Stores > Configuration > CookieScript > Cookie Banner**.
 1. Paste the **CookieScript source link** from your account at Cookie-Script.com, under the *Installation* tab.
    It looks like `https://cdn.cookie-script.com/s/0123456789abcdef0123456789abcdef.js`. Anything else is rejected on save.
 2. Choose the **script location** and **position**. To block third-party cookies until the visitor agrees,
-   keep the script as high in the page as possible (*Header*, *First* is the default).
+   keep the script as high in the page as possible (*Header*, *First* is the default). *Header* means the area where
+   Magento prints extra head content, which comes after Magento's own styles and core scripts; *Body*, *First* is the
+   very start of the page body.
 3. Set **Enable CookieScript banner** to *Yes* and save.
 
 ### 2. Google Consent Mode v2
 
 Turn it on in the *Google Consent Mode v2* section. The defaults are printed before the banner script so the banner
 can update them when the visitor makes a choice. Add **regional settings** to use different defaults for specific
-regions (for example `US-CA`, or `DE, FR`). An empty "Wait for update" uses 500 ms.
+regions (for example `US-CA`, or `DE, FR`). "Wait for update" is a number from 1 to 60000 ms; an empty regional value uses 500 ms.
 
 The Consent Mode script is printed together with the banner, so it needs the banner to be enabled and have a source link.
 

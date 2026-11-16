@@ -27,6 +27,11 @@ class Sanitizer
     public const DEFAULT_WAIT_FOR_UPDATE = 500;
 
     /**
+     * The longest "wait for update" accepted, in milliseconds (one minute).
+     */
+    public const MAX_WAIT_FOR_UPDATE = 60000;
+
+    /**
      * One or more codes such as "US", "US-CA" or "DE, FR", separated by commas.
      */
     private const REGION_CODES_PATTERN = '/^\s*([a-z]{2}(-[a-z0-9]{1,3})?\s*)(,\s*[a-z]{2}(-[a-z0-9]{1,3})?\s*)*$/i';
@@ -60,10 +65,20 @@ class Sanitizer
     }
 
     /**
+     * True for whole numbers from 1 to MAX_WAIT_FOR_UPDATE milliseconds.
+     *
+     * @param mixed $value
+     */
+    public static function isValidWaitForUpdate(mixed $value): bool
+    {
+        return self::isPositiveInteger($value) && (int) $value <= self::MAX_WAIT_FOR_UPDATE;
+    }
+
+    /**
      * Cleans one block of settings (the global one, or one region).
      *
      * - consent values are limited to "granted" / "denied"
-     * - wait_for_update becomes a positive integer (500 when missing or invalid)
+     * - wait_for_update becomes a whole number from 1 to 60000 (500 when missing or invalid)
      * - unknown keys are dropped
      *
      * @param array<string, mixed> $settings
@@ -83,7 +98,7 @@ class Sanitizer
         }
 
         $waitForUpdate = $settings['wait_for_update'] ?? 0;
-        $clean['wait_for_update'] = self::isPositiveInteger($waitForUpdate)
+        $clean['wait_for_update'] = self::isValidWaitForUpdate($waitForUpdate)
             ? (int) $waitForUpdate
             : self::DEFAULT_WAIT_FOR_UPDATE;
 

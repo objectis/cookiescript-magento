@@ -58,7 +58,7 @@ class ScriptBuilder
         }
 
         $waitForUpdate = $settings['wait_for_update'] ?? 0;
-        $data['wait_for_update'] = Sanitizer::isPositiveInteger($waitForUpdate)
+        $data['wait_for_update'] = Sanitizer::isValidWaitForUpdate($waitForUpdate)
             ? (int) $waitForUpdate
             : Sanitizer::DEFAULT_WAIT_FOR_UPDATE;
 
